@@ -1,9 +1,29 @@
 import React from 'react'
+import injectSheet from 'react-jss'
 
-const Header = () => {
+const Header = ({classes}) => {
+  const {main, greeting, instructions} = classes
+
   return (
-    <div>This is my Header</div>
+    <div className={main}>
+      <div className={greeting}>Welcome to Silver Fiesta!!</div>
+      <div className={instructions}>
+        Type in a City to See the current Weather
+      </div>
+    </div>
   )
 }
 
-export default Header
+const styles = {
+  main: {
+    textAlign: 'center',
+  },
+  greeting: {
+    fontSize: 40,
+  },
+  instructions: {
+    fontSize: 20,
+  },
+}
+
+export default injectSheet(styles)(Header)
