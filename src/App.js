@@ -24,7 +24,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 40,
+    paddingTop: 40,
+    paddingBottom: 40,
     height: 600,
   },
 }

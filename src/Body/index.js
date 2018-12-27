@@ -12,10 +12,10 @@ const Body = ({classes}) => {
 
 const styles = {
   main: {
-    height: 200,
-    width: 200,
-    backgroundColor: "yellow",
-    color: "black",
+    boxSizing: 'border-box',
+    padding: 20,
+    width: '100%',
+    backgroundColor: "lightBlue",
   },
 }
 
