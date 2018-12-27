@@ -2,24 +2,27 @@ import React from 'react'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 
+const apiKey = 'b2077944e95bdb0c5e00862011d622ad'
+
 class InputBox extends React.PureComponent {
   state = {
-    textField: "",
+    city: "",
   }
 
   onChange = (e) => {
     this.setState({
-      textField: e.target.value,
+      city: e.target.value,
     })
   }
 
   onKeyDown = (e) => {
-    if (e.key === "Enter") {console.log("Enter Clicked")}
+    if (e.key === "Enter") {this.sendRequest()}
   }
 
   sendRequest = () => {
-    let apiKey = 'b2077944e95bdb0c5e00862011d622ad'
-    let city = 'portland'
+    const {city} = this.state
+
+    if (!city || !city.length > 0) return
     let url =
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
 
@@ -48,7 +51,7 @@ class InputBox extends React.PureComponent {
           shrink: true,
         }}
         autoFocus
-        value={this.state.textField}
+        value={this.state.city}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
       />
