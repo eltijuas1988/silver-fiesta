@@ -1,9 +1,23 @@
 import React from 'react'
+import injectSheet from "react-jss"
 
-const Body = () => {
-  return (
-    <div>This is my body</div>
-  )
+const styles = {
+  main: {
+    color: "#fff",
+  },
 }
 
-export default Body
+class Body extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        This is the body
+      </div>
+    )
+  }
+}
+
+// const StyledBody = injectSheet(styles)(Body)
+// export default StyledBody
+
+export default injectSheet(styles)(Body)
