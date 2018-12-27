@@ -12,6 +12,10 @@ class InputBox extends React.PureComponent {
     })
   }
 
+  onKeyDown = (e) => {
+    if (e.key === "Enter") {console.log("Enter Clicked")}
+  }
+
   render() {
     return (
       <TextField
@@ -24,8 +28,10 @@ class InputBox extends React.PureComponent {
         InputLabelProps={{
           shrink: true,
         }}
+        autoFocus
         value={this.state.textField}
         onChange={this.onChange}
+        onKeyDown={this.onKeyDown}
       />
     )
   }
