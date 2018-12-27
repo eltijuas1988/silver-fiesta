@@ -1,23 +1,22 @@
 import React from 'react'
 import injectSheet from "react-jss"
+import InputBox from './InputBox'
+
+const Body = ({classes}) => {
+  return (
+    <div className={classes.main}>
+      <InputBox/>
+    </div>
+  )
+}
 
 const styles = {
   main: {
-    color: "#fff",
+    height: 200,
+    width: 200,
+    backgroundColor: "yellow",
+    color: "black",
   },
 }
-
-class Body extends React.PureComponent {
-  render() {
-    return (
-      <div>
-        This is the body
-      </div>
-    )
-  }
-}
-
-// const StyledBody = injectSheet(styles)(Body)
-// export default StyledBody
 
 export default injectSheet(styles)(Body)
