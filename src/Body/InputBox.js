@@ -1,9 +1,19 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
 
-const InputBox = () => {
-  return (
-    <div>
+class InputBox extends React.PureComponent {
+  state = {
+    textField: "",
+  }
+
+  onChange = (e) => {
+    this.setState({
+      textField: e.target.value,
+    })
+  }
+
+  render() {
+    return (
       <TextField
         id="outlined-full-width"
         label="City"
@@ -14,9 +24,11 @@ const InputBox = () => {
         InputLabelProps={{
           shrink: true,
         }}
+        value={this.state.textField}
+        onChange={this.onChange}
       />
-    </div>
-  )
+    )
+  }
 }
 
 export default InputBox
