@@ -1,11 +1,11 @@
 import React from 'react'
 import injectSheet from 'react-jss'
-import InputBox from './InputBox'
+import TemperatureDisplay from './TemperatureDisplay'
 
 const Body = ({classes}) => {
   return (
     <div className={classes.main}>
-      <InputBox/>
+      <TemperatureDisplay/>
     </div>
   )
 }
@@ -15,6 +15,7 @@ const styles = {
     boxSizing: 'border-box',
     padding: 20,
     width: '100%',
+    height: 600,
     backgroundColor: "lightBlue",
   },
 }

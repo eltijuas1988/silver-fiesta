@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 
+const domain = "http://api.openweathermap.org/data/2.5/weather"
 const apiKey = 'b2077944e95bdb0c5e00862011d622ad'
 
 class InputBox extends React.PureComponent {
@@ -21,11 +22,10 @@ class InputBox extends React.PureComponent {
   }
 
   sendRequest = () => {
-    const domain = "http://api.openweathermap.org/data/2.5/weather"
     const {city} = this.state
-    const params = `?q=${city}&units=imperial&appid=${apiKey}`
 
     if (!city || !city.length > 0) return
+    const params = `?q=${this.state.city}&units=imperial&appid=${apiKey}`
     let url = `${domain}${params}`
 
     axios.get(`${url}`)
