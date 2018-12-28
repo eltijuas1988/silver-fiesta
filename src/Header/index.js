@@ -2,10 +2,10 @@ import React from 'react'
 import injectSheet from 'react-jss'
 
 const Header = ({classes}) => {
-  const {main, greeting, instructions} = classes
+  const {root, greeting, instructions} = classes
 
   return (
-    <div className={main}>
+    <div className={root}>
       <div className={greeting}>Welcome to Silver Fiesta!!</div>
       <div className={instructions}>
         Type in a City to See the current Weather
@@ -15,8 +15,11 @@ const Header = ({classes}) => {
 }
 
 const styles = {
-  main: {
+  root: {
     textAlign: 'center',
+    backgroundColor: '#9BEBA5',
+    width: '100%',
+    padding: [20, 40, 20, 40],
   },
   greeting: {
     fontSize: 40,

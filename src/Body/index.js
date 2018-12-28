@@ -13,7 +13,7 @@ const Body = ({classes}) => {
 const styles = {
   main: {
     boxSizing: 'border-box',
-    padding: 20,
+    padding: 40,
     width: '100%',
     height: '100%',
     backgroundColor: "lightBlue",
