@@ -46,12 +46,12 @@ class TemperatureDisplay extends React.PureComponent {
     this.setState({temperature: temp})
   }
 
-  updateError = ({error}) => {
-    this.setState({error})
+  showErrorMessage = () => {
+    this.setState({error: "Please Enter A Valid City."})
   }
 
-  showDisplayMessage = () => {
-    this.setState({displayMessage: true})
+  clearErrorMessage = () => {
+    this.setState({error: null})
   }
 
   sendRequest = () => {
@@ -71,10 +71,11 @@ class TemperatureDisplay extends React.PureComponent {
       const {temp} = main
 
       this.updateTemperature({temp})
-      this.showDisplayMessage()
+      this.clearErrorMessage()
+      this.setState({displayMessage: true})
     })
     .catch(error => {
-      this.updateError({error})
+      this.showErrorMessage()
       console.log({error})
     })
   }
@@ -83,20 +84,20 @@ class TemperatureDisplay extends React.PureComponent {
     const {city, temperature, displayMessage} = this.state
 
     if (displayMessage) {
-      return `The current temperature in ${city} is ${temperature}\xBA F.`
+      return `The current temperature in ${city} is ${temperature}\xBAF.`
     }
   }
 
   render() {
     const {classes} = this.props
-    const {city} = this.state
+    const {city, error} = this.state
 
     return (
       <div onKeyDown={this.onKeyDown}>
         <div className={classes.input}>
-          <InputBox city={city} onChange={this.onChange}/>
+          <InputBox city={city} error={error} onChange={this.onChange}/>
         </div>
-        <Message message={this.composeTemperatureMessage()}/>
+        <Message message={this.composeTemperatureMessage()} error={error}/>
       </div>
     )
   }
