@@ -15,7 +15,7 @@ const styles = {
     boxSizing: 'border-box',
     padding: 20,
     width: '100%',
-    height: 600,
+    height: '100%',
     backgroundColor: "lightBlue",
   },
 }

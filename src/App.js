@@ -24,10 +24,19 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 40,
-    paddingBottom: 40,
-    height: 600,
+    height: '100%',
   },
+  '@global': {
+    html: {
+      height: '100%',
+    },
+    body: {
+      height: '100%',
+    },
+    '#root': {
+      height: '100%',
+    },
+  }
 }
 
 export default injectSheet(styles)(App)
