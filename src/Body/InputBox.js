@@ -7,14 +7,11 @@ const apiKey = 'b2077944e95bdb0c5e00862011d622ad'
 
 class InputBox extends React.PureComponent {
   state = {
-    city: "",
     error: null,
   }
 
   onChange = (e) => {
-    this.setState({
-      city: e.target.value,
-    })
+    this.props.onChange(e)
   }
 
   onKeyDown = (e) => {
@@ -22,10 +19,10 @@ class InputBox extends React.PureComponent {
   }
 
   sendRequest = () => {
-    const {city} = this.state
+    const {city} = this.props
 
     if (!city || !city.length > 0) return
-    const params = `?q=${this.state.city}&units=imperial&appid=${apiKey}`
+    const params = `?q=${city}&units=imperial&appid=${apiKey}`
     let url = `${domain}${params}`
 
     axios.get(`${url}`)
@@ -47,6 +44,7 @@ class InputBox extends React.PureComponent {
 
   render() {
     const {error} = this.state
+    const {city} = this.props
 
     return (
       <TextField
@@ -63,7 +61,7 @@ class InputBox extends React.PureComponent {
           shrink: true,
         }}
         autoFocus
-        value={this.state.city}
+        value={city}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
       />

@@ -4,13 +4,24 @@ import InputBox from './InputBox'
 import Message from './Message'
 
 class TemperatureDisplay extends React.PureComponent {
+  state = {
+    city: "",
+  }
+
+  onChange = (e) => {
+    this.setState({
+      city: e.target.value,
+    })
+  }
+
   render() {
     const {classes} = this.props
+    const {city} = this.state
 
     return (
       <div>
         <div className={classes.input}>
-          <InputBox/>
+          <InputBox city={city} onChange={this.onChange}/>
         </div>
         <Message/>
       </div>
