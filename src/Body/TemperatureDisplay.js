@@ -9,6 +9,19 @@ class TemperatureDisplay extends React.PureComponent {
     city: "",
     temperature: undefined,
     error: undefined,
+    displayMessage: false,
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevCity = prevState.city
+    const currentCity = this.state.city
+
+    if (prevCity && (prevCity !== currentCity)) {
+      this.setState({
+        displayMessage: false,
+        temperature: null
+      })
+    }
   }
 
   onChange = (e) => {
@@ -18,7 +31,15 @@ class TemperatureDisplay extends React.PureComponent {
   }
 
   onKeyDown = (e) => {
-    if (e.key === "Enter") {this.sendRequest()}
+    const {city, temperature} = this.state
+
+    if (e.key === "Enter") {
+      if (city && temperature) {
+        this.setState({displayMessage: true})
+      }
+
+      this.sendRequest()
+    }
   }
 
   updateTemperature = ({temp}) => {
@@ -27,6 +48,10 @@ class TemperatureDisplay extends React.PureComponent {
 
   updateError = ({error}) => {
     this.setState({error})
+  }
+
+  showDisplayMessage = () => {
+    this.setState({displayMessage: true})
   }
 
   sendRequest = () => {
@@ -46,8 +71,7 @@ class TemperatureDisplay extends React.PureComponent {
       const {temp} = main
 
       this.updateTemperature({temp})
-
-      console.log({temp})
+      this.showDisplayMessage()
     })
     .catch(error => {
       this.updateError({error})
@@ -56,10 +80,11 @@ class TemperatureDisplay extends React.PureComponent {
   }
 
   composeTemperatureMessage = () => {
-    const {city, temperature} = this.state
-    if (!city && !temperature) return null
+    const {city, temperature, displayMessage} = this.state
 
-    return `The current temperature in ${city} is ${temperature} degrees F.`
+    if (displayMessage) {
+      return `The current temperature in ${city} is ${temperature}\xBA F.`
+    }
   }
 
   render() {
