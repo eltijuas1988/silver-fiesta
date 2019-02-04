@@ -11,7 +11,9 @@ class App extends Component {
     return (
       <div className={classes.main}>
         <Header/>
-        <Body/>
+        <div className={classes.body}>
+          <Body/>
+        </div>
         <Footer/>
       </div>
     );
@@ -25,6 +27,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     height: '100%',
+  },
+  body: {
+    display: 'flex',
+    flexGrow: 1,
+    width: '100%',
+    marginTop: 2,
+    marginBottom: 2,
   },
   '@global': {
     html: {

@@ -17,7 +17,7 @@ const Header = ({classes}) => {
 const styles = {
   root: {
     textAlign: 'center',
-    backgroundColor: '#9BEBA5',
+    backgroundColor: '#9EB0E1',
     width: '100%',
     padding: [20, 40, 20, 40],
   },
