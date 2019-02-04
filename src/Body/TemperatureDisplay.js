@@ -4,6 +4,8 @@ import injectSheet from 'react-jss'
 import InputBox from './InputBox'
 import Message from './Message'
 
+const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_MAP_KEY
+
 class TemperatureDisplay extends React.PureComponent {
   state = {
     city: "",
@@ -56,12 +58,11 @@ class TemperatureDisplay extends React.PureComponent {
 
   sendRequest = () => {
     const domain = "http://api.openweathermap.org/data/2.5/weather"
-    const apiKey = 'b2077944e95bdb0c5e00862011d622ad'
 
     const {city} = this.state
 
     if (!city || !city.length > 0) return null
-    const params = `?q=${city}&units=imperial&appid=${apiKey}`
+    const params = `?q=${city}&units=imperial&appid=${openWeatherKey}`
     let url = `${domain}${params}`
 
     axios.get(`${url}`)
